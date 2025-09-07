@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  redis:
+    image: bitnami/redis:7.0.14-debian-11-r2
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    healthcheck:
+      test: redis-cli --raw incr ping
+      interval: 5s
+
+  mysql:
+    image: bitnami/mysql:5.7.41-debian-11-r4
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=ringle-word-root
+      - MYSQL_DATABASE=ringle_word_test
+      - MYSQL_USER=ringle_word_user
+      - MYSQL_PASSWORD=ringle-word-pass
+    volumes:
+      - ./scripts/init-timezone.sh:/docker-entrypoint-initdb.d/init-timezone.sh
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      interval: 5s
+
+  python_word:
+    build:
+      context: ./python-service
+    ports:
+      - "8000:8000"
+    environment:
+      - LOG_LEVEL=info
+
+volumes:
+  mysql_data:
+  redis_data:

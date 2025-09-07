@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/docker-compose.yml">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/docker-compose.yml" />
+              <option name="originalContent" value="version: '3.8'&#10;&#10;services:&#10;  redis:&#10;    image: bitnami/redis:7.0.14-debian-11-r2&#10;    ports:&#10;      - &quot;6379:6379&quot;&#10;    environment:&#10;      - ALLOW_EMPTY_PASSWORD=yes&#10;    healthcheck:&#10;      test: redis-cli --raw incr ping&#10;      interval: 5s&#10;&#10;  mysql:&#10;    image: bitnami/mysql:5.7.41-debian-11-r4&#10;    ports:&#10;      - &quot;3306:3306&quot;&#10;    environment:&#10;      - MYSQL_ROOT_PASSWORD=ringle-word-root&#10;      - MYSQL_DATABASE=ringle_word_test&#10;      - MYSQL_USER=ringle_word_user&#10;      - MYSQL_PASSWORD=ringle-word-pass&#10;    volumes:&#10;      - ./scripts/init-timezone.sh:/docker-entrypoint-initdb.d/init-timezone.sh&#10;    healthcheck:&#10;      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD&#10;      interval: 5s&#10;&#10;  python_lemma:&#10;    image: ghcr.io/ringleplus/python-lemma:latest&#10;    ports:&#10;      - &quot;50051:50051&quot;&#10;    environment:&#10;      - LOG_LEVEL=info&#10;&#10;  python_word:&#10;    build:&#10;      context: ./python-service&#10;    ports:&#10;      - &quot;8000:8000&quot;&#10;    environment:&#10;      - LOG_LEVEL=info&#10;&#10;volumes:&#10;  mysql_data:&#10;  redis_data:" />
+              <option name="updatedContent" value="version: '3.8'&#10;&#10;services:&#10;  redis:&#10;    image: bitnami/redis:7.0.14-debian-11-r2&#10;    ports:&#10;      - &quot;6379:6379&quot;&#10;    environment:&#10;      - ALLOW_EMPTY_PASSWORD=yes&#10;    healthcheck:&#10;      test: redis-cli --raw incr ping&#10;      interval: 5s&#10;&#10;  mysql:&#10;    image: bitnami/mysql:5.7.41-debian-11-r4&#10;    ports:&#10;      - &quot;3306:3306&quot;&#10;    environment:&#10;      - MYSQL_ROOT_PASSWORD=ringle-word-root&#10;      - MYSQL_DATABASE=ringle_word_test&#10;      - MYSQL_USER=ringle_word_user&#10;      - MYSQL_PASSWORD=ringle-word-pass&#10;    volumes:&#10;      - ./scripts/init-timezone.sh:/docker-entrypoint-initdb.d/init-timezone.sh&#10;    healthcheck:&#10;      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD&#10;      interval: 5s&#10;&#10;  python_lemma:&#10;    image: ghcr.io/ringleplus/python-lemma:latest&#10;    ports:&#10;      - &quot;50051:50051&quot;&#10;    environment:&#10;      - LOG_LEVEL=info&#10;&#10;  python_word:&#10;    build:&#10;      context: ./python-service&#10;    ports:&#10;      - &quot;8000:8000&quot;&#10;    environment:&#10;      - LOG_LEVEL=info&#10;&#10;volumes:&#10;  mysql_data:&#10;  redis_data:" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

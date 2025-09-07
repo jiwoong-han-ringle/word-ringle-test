@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package word_service;
+
+// 단어 처리 요청
+message ProcessRequest {
+  string sentence = 1;
+}
+
+// 개별 단어 정보
+message WordInfo {
+  string word = 1;      // 원본 단어
+  string lemma = 2;     // 원형 (root)  
+  string pos = 3;       // 품사
+}
+
+// 단어 처리 응답
+message ProcessResponse {
+  repeated WordInfo words = 1;
+  bool success = 2;
+  string error_message = 3;
+}
+
+// 단어 처리 서비스
+service WordProcessor {
+  rpc ProcessSentence(ProcessRequest) returns (ProcessResponse);
+}
