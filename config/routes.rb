@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     # For convenience, also allow without user_id (defaults to user 1)
     # POST /api/words
     # GET /api/stats
-    resources :words, only: [:create]
+    # POST /api/words/compare
+    resources :words, only: [:create] do
+      collection do
+        post :compare
+      end
+    end
     resources :stats, only: [:show]
   end
 
