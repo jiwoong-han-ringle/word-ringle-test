@@ -9,7 +9,7 @@ gem "mysql2", "~> 0.5"
 # Use redis for caching
 gem "redis", "~> 5.0"
 # HTTP client for Python service communication
-gem "faraday", "~> 2.0"
+gem "faraday", "~> 2.14"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
